@@ -5,10 +5,15 @@ import { Contact } from './pages/Contact';
 import { Home } from './pages/Home';
 import { Error } from './pages/Error';
 import { Navbar } from './Navbar';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 
 function App() {
+  const client = new QueryClient();
+
   return (
     <div className="App">
+    <QueryClientProvider client={client}>
      <Router>
       <Navbar />
       <Routes>
@@ -18,6 +23,7 @@ function App() {
         <Route path='*' element={<Error />} />
       </Routes>
      </Router>
+     </QueryClientProvider>
     </div>
   );
 }
